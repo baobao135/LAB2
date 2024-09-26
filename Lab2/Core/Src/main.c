@@ -309,15 +309,15 @@ static void MX_GPIO_Init(void)
 const int MAX_LED = 4;
 int index_led = 0;
 int led_buffer [4] = {1, 2, 3, 4};
-int led_counter=50;
-int counter=50;
+int led_counter=100;
+int counter=25;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if (led_counter <= 0) {
-			led_counter = 50;
+			led_counter = 100;
 			HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 		}
 	if (counter <= 0) {
-		counter = 50;
+		counter = 25;
 
 		if (index_led >= MAX_LED) {
 			index_led = 0;
