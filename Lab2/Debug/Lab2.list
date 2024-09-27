@@ -181,8 +181,8 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer0(2000);
- 80001ce:	f44f 60fa 	mov.w	r0, #2000	; 0x7d0
+  setTimer0(1000);
+ 80001ce:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
  80001d2:	f7ff ffbb 	bl	800014c <setTimer0>
   while (1)
   {
