@@ -146,15 +146,15 @@ int* updateClockBuffer(int hour, int minute){
 	led_buffer[3]=minute%10;
 	return led_buffer;
 }
-int timer0_counter[3]={0,0,0};
-int timer0_flag[3]={0,0,0};
+int timer0_counter[4]={0,0,0,0};
+int timer0_flag[4]={0,0,0,0};
 int TIMER_CYCLE=10;
 void setTimer0(int index ,int duration){
 	timer0_counter[index]=duration/TIMER_CYCLE;
 	timer0_flag[index]=0;
 }
 void timer_run(){
-	for(int i=0; i<3;i++){
+	for(int i=0; i<4;i++){
 		if(timer0_counter[i]>0)
 			timer0_counter[i]--;
 		if(timer0_counter[i]==0)
@@ -223,6 +223,11 @@ void updateLEDMatrix (int index ){
 		default:
 			break;
 	}
+}
+void shiftLeft_LedMatrix(){
+	for (int i = 0; i < 8; i++) {
+			matrix_buffer[i] = (matrix_buffer[i] >> 1) + (matrix_buffer[i] << 7);
+		}
 }
 /* USER CODE END 0 */
 
