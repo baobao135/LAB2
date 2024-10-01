@@ -199,6 +199,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   setTimer0(1000);
   int hour=16, minute=23, second=55;
+  updateClockBuffer(hour, minute);
   while (1)
   {
     /* USER CODE END WHILE */
