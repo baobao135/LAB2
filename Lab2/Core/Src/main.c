@@ -200,7 +200,6 @@ void updateLEDMatrix (int index ){
 			displayMatrix(matrix_buffer[index]);
 			break;
 		case 3:
-			clearMatrix();
 			HAL_GPIO_WritePin(ROW3_GPIO_Port, ROW3_Pin, RESET);
 			displayMatrix(matrix_buffer[index]);
 			break;
@@ -226,7 +225,7 @@ void updateLEDMatrix (int index ){
 }
 void shiftLeft_LedMatrix(){
 	for (int i = 0; i < 8; i++) {
-			matrix_buffer[i] = (matrix_buffer[i] >> 1) + (matrix_buffer[i] << 7);
+			matrix_buffer[i] = (matrix_buffer[i] >> 1)+(matrix_buffer[i]<<7);
 		}
 }
 /* USER CODE END 0 */
@@ -307,6 +306,7 @@ int main(void)
 	  if(timer0_flag[2]==1){
 		  if(index_matrix>= MAX_LED_MATRIX){
 			  index_matrix=0;
+			  shiftLeft_LedMatrix();
 		  }
 		  updateLEDMatrix(index_matrix++);
 		  setTimer0(2,10);
